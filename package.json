@@ -1,0 +1,49 @@
+{
+  "name": "todolist_react",
+  "version": "1.0.0",
+  "description": "My personnal React.js Todolist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development ./src/index.js --output ./dist/main_dev.js",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open",
+    "clean": "rm -rf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NmiDev/todolist_react.git"
+  },
+  "author": "NmiDev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NmiDev/todolist_react/issues"
+  },
+  "homepage": "https://github.com/NmiDev/todolist_react#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-eslint": "^8.2.5",
+    "css-loader": "^2.1.0",
+    "eslint": "^5.15.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "favicons-webpack-plugin": "0.0.9",
+    "file-loader": "^3.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}
