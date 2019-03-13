@@ -95,10 +95,11 @@ const app = {
     // Task label
     const label = document.createElement('span');
     label.textContent = task.label;
-    // Task checbox
+    // Task checkbox
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.done;
+
     // Handler for check task
     checkbox.addEventListener('change', () => {
       // eslint-disable-next-line no-param-reassign
@@ -118,9 +119,20 @@ const app = {
   addTask: (evt) => {
     // Stop default action
     evt.preventDefault();
-    // Adding a task
-    console.log('Tache en plus');
-    // TODO:
+    // Catch and clean the new label
+    let newLabel = evt.target.input.value;
+    newLabel = newLabel.trim();
+    // Empty label
+    if (newLabel === '') {
+      // TODO: empty label task
+    }
+    // Adding newTask
+    tasks.push({
+      label: newLabel,
+      done: false,
+    });
+    // Reload app
+    app.init();
   },
 };
 
