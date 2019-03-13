@@ -9,6 +9,9 @@
  * Fond Tâche = `#eee`
  * Bordure tâche = `#ccc`
 */
+* {
+    box-sizing: border-box;
+}
 
 body {
     background-color: #2e5849;

@@ -57,12 +57,12 @@ const app = {
     // Title for the list
     const title = document.createElement('h1');
     const plural = app.count > 1 ? 's' : '';
-    title.setAttribute = ('id', 'title');
+    title.setAttribute('id', 'title');
     title.textContent = `${app.count} tâche${plural} en cours`;
     app.container.appendChild(title);
     // List of tasks
     const list = document.createElement('ul');
-    list.setAttribute = ('id', 'list');
+    list.setAttribute('id', 'list');
     // Item list with task
     tasks.forEach((task) => {
       const li = document.createElement('li');
