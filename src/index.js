@@ -1,4 +1,5 @@
 // Imports
+import './styles/reset.css';
 import './styles/index.css';
 import 'babel-polyfill';
 
