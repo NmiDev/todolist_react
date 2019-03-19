@@ -13,18 +13,22 @@ import './form.scss';
 /**
  * Code
  */
-const Form = ({ handleSubmit }) => {
-  console.log();
-
-  return (
-    <form id="form" onSubmit={handleSubmit}>
-      <input id="form-input" type="text" placeholder="Ajouter une tâche" />
-    </form>
-  );
-};
+const Form = ({ handleSubmit, handleChange, inputValue }) => (
+  <form id="form" onSubmit={handleSubmit}>
+    <input
+      id="form-input"
+      type="text"
+      placeholder="Ajouter une tâche"
+      value={inputValue}
+      onChange={handleChange}
+    />
+  </form>
+);
 
 Form.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
 };
 
 /**

@@ -24,36 +24,49 @@ class Application extends React.Component {
    */
   state = {
     tasks: data,
+    input: '',
   };
 
   /**
    * Actions
    */
-  addTask = (e) => {
+
+  handleChange = (event) => {
     // Prevent default
-    e.preventDefault();
+    event.preventDefault();
+    // Catch and clean the value of input
+    const inputValue = event.target.value;
+    // Set the state
+    this.setState({
+      input: inputValue,
+    });
+  };
+
+  handleSubmit = (event) => {
+    // Prevent default
+    event.preventDefault();
     // Needed values from the state
-    const { tasks } = this.state;
-    // Catch and clean the new task value
-    let newLabel = e.target.firstChild.value;
-    newLabel = newLabel.trim();
+    const { tasks, input } = this.state;
+    // Catch the new label
+    const newLabel = input.trim();
     // Generate the next id
     const currentId = tasks.map(task => (task.id));
     const nextId = Math.max(...currentId) + 1;
+    // New task object
+    const newTask = {
+      id: nextId,
+      label: newLabel,
+      done: false,
+    };
 
-    // Set the state
+    // Set the state and clean the input
     this.setState({
       tasks: [
         ...tasks,
-        {
-          id: nextId,
-          label: newLabel,
-          done: false,
-        },
+        newTask,
       ],
+      input: '',
     });
-
-    // Clear the input
   };
 
   /**
@@ -61,18 +74,26 @@ class Application extends React.Component {
   */
   render() {
     // Data from the state
-    const { tasks } = this.state;
+    const { tasks, input } = this.state;
     // Check the value of count for Ephemeride props
     const count = tasks.filter(task => task.done === false).length;
 
     return (
       <div id="application">
         {/* Form component */}
-        <Form handleSubmit={this.addTask} />
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          inputValue={input}
+        />
         {/* Counter component */}
-        <Ephemeride counter={count} />
+        <Ephemeride
+          counter={count}
+        />
         {/* List component */}
-        <List tasks={tasks} />
+        <List
+          tasks={tasks}
+        />
       </div>
     );
   }
