@@ -13,8 +13,9 @@
     .task-input {
         margin-right: 0.7em;
     }
+}
 
-    .task-label {
-
-    }
+.task--done {
+    text-decoration: line-through;
+    opacity: 0.5;
 }

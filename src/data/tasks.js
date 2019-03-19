@@ -2,16 +2,21 @@ export default [
   {
     id: 1,
     label: 'Learn React.js',
-    done: true,
+    done: false,
   },
   {
     id: 2,
     label: 'Improve my skills',
-    done: false,
+    done: true,
   },
   {
     id: 3,
-    label: 'Amazing web components',
+    label: 'Work with amazing web components',
     done: true,
+  },
+  {
+    id: 4,
+    label: 'I\'m found of ES6',
+    done: false,
   },
 ];

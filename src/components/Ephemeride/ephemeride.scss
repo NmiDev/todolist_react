@@ -1,0 +1,25 @@
+@import '../../styles/vars';
+
+#ephemeride {
+    display: flex;
+    align-items: baseline;
+    font-size: 1.3em;
+    width: 60%;
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding-bottom: 1em;
+    border-bottom: 1px solid lightgrey;
+
+    #date {
+        width: 50%;
+        font-weight: bold;
+    }
+
+    #counter {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
