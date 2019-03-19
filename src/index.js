@@ -12,7 +12,9 @@ import Application from 'Components/Application';
 /**
  * Code
  */
-const rootComponent = <Application />;
+const rootComponent = (
+  <Application />
+);
 
 const targetNode = document.getElementById('root');
 
