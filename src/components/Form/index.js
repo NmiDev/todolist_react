@@ -13,7 +13,9 @@ import './form.scss';
  * Code
  */
 const Form = () => (
-  <div>Form</div>
+  <form id="form">
+    <input id="form-input" type="text" value="Ajouter une tâche" />
+  </form>
 );
 
 /**

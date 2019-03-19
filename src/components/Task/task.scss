@@ -1,0 +1,20 @@
+@import '../../styles/vars';
+
+.task {
+    display: flex;
+    align-items: baseline;
+    padding: 1em 0.5em;
+    border: 1px solid lightgray;
+    border-radius: 0.3em;
+    margin-bottom: 0.5em;
+    font-size: 1.1em;
+    background-color: darken($background, 10%);
+
+    .task-input {
+        margin-right: 0.7em;
+    }
+
+    .task-label {
+
+    }
+}

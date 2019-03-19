@@ -1,14 +1,17 @@
 export default [
   {
-    label: 'farine',
+    id: 1,
+    label: 'Learn React.js',
     done: true,
   },
   {
-    label: 'chocolat',
+    id: 2,
+    label: 'Improve my skills',
     done: false,
   },
   {
-    label: 'lait',
+    id: 3,
+    label: 'Amazing web components',
     done: true,
   },
 ];

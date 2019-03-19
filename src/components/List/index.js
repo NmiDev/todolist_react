@@ -9,11 +9,21 @@ import React from 'react';
 // Styles
 import './list.scss';
 
+// Components
+import Task from 'Components/Task';
+
+// Data
+import tasks from '../../data/tasks';
+
 /**
  * Code
  */
 const List = () => (
-  <div>List</div>
+  <ul id="list">
+    {tasks.map(task => (
+      <Task {...task} key={task.id} />
+    ))}
+  </ul>
 );
 
 /**
