@@ -1,74 +1,101 @@
+// Path resolver 
 const path = require('path');
+// Webpack plugins 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+// Modes : dev, prod or none 
+const devMode = process.env.NODE_ENV !== 'production';
 
+// Configuration
 module.exports = {
+  // Set the default mode
+  mode : 'development',
+  // Resolve personnal path alias
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, 'src/components/'),
+    }
+  },
   // Set the entry point
   entry: [
-    "babel-polyfill", // Babel Polyfill utility
-    "./src/index.js"
+    // Babel Polyfill tools
+    "babel-polyfill",
+    // Main entry point for my script
+    "./src/index.js",
+    // Main entry point for my styles
+    "./src/styles/index.scss"
   ],
   // Set the output
   output: {
+    // Path for the file
     path: path.resolve(__dirname, 'dist'),
+    // Name for the output file
     filename: "app.js"
   },
-  // Loaders module configuration
+  // Loaders modules configurations
   module: {
     rules: [
+      // Files .js manager
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            cacheDirectory: true,
+          },
         }
       },
+      // Files .html manager
       {
         test: /\.html$/,
         use: [
           {
             loader: "html-loader",
-            options: { minimize: true }
+            options: { minimize: !devMode ? true : false }
           }
         ]
       },
+      // Files .sass, .scss, .css manager
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader"
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer'),
+              ]
+            }
+          },
+          "sass-loader"
         ]
       },
+      // Files images manager
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|ico)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'assets/img/',
+              outputPath: 'assets/',
             },
           },
         ],
       },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            outputPath: 'assets/fonts/',
-          },
-        },
-      },
     ]
   },
-  // Plugins configuration
+  // Plugins configurations
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
+      favicon: "./src/assets/favicon.ico",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
@@ -80,24 +107,5 @@ module.exports = {
     new OptimizeCSSAssetsPlugin({
 
     }),
-    new FaviconsWebpackPlugin({
-      // Your source logo
-      logo: "./src/assets/img/favicon.png",
-      // Inject the html into the html-webpack-plugin
-      inject: true,  
-      // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
-      icons: {
-        android: false,
-        appleIcon: false,
-        appleStartup: false,
-        coast: false,
-        favicons: true,
-        firefox: true,
-        opengraph: false,
-        twitter: false,
-        yandex: false,
-        windows: false
-      }
-    })
   ]
 };
