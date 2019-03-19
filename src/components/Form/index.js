@@ -2,6 +2,7 @@
  * NPM Imports
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local Imports
@@ -12,11 +13,19 @@ import './form.scss';
 /**
  * Code
  */
-const Form = () => (
-  <form id="form">
-    <input id="form-input" type="text" value="Ajouter une tâche" />
-  </form>
-);
+const Form = ({ handleSubmit }) => {
+  console.log();
+
+  return (
+    <form id="form" onSubmit={handleSubmit}>
+      <input id="form-input" type="text" placeholder="Ajouter une tâche" />
+    </form>
+  );
+};
+
+Form.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 /**
  * Export

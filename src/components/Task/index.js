@@ -15,13 +15,13 @@ import './task.scss';
  */
 const Task = ({ label, done }) => {
   // Prepare class for task
-  const className = classNames(
+  const classList = classNames(
     'task',
     { 'task--done': done },
   );
 
   return (
-    <li className={className}>
+    <li className={classList}>
       <input className="task-input" type="checkbox" checked={done} />
       <p className="task-label">{label}</p>
     </li>
