@@ -39,7 +39,9 @@ class Form extends React.Component {
   };
 
   render() {
+    // Data from props
     const { inputValue } = this.props;
+
     return (
       <form id="form" onSubmit={this.handleSubmit}>
         <input
@@ -48,6 +50,7 @@ class Form extends React.Component {
           placeholder="Ajouter une tâche"
           value={inputValue}
           onChange={this.handleChange}
+          autoComplete="off"
         />
       </form>
     );

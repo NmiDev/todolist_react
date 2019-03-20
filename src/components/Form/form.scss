@@ -10,6 +10,7 @@
     margin-bottom: 3em;
 
     #form-input {
+        box-sizing: border-box;
         width: 40%;
         max-width: 600px;
         border: none;
@@ -17,17 +18,22 @@
         padding: 0.5em;
         font-size: 1.3em;
         background-color: inherit;
-        color: $color-input;
         text-align: center;
         transition-property: width;
         transition-duration: 0.3s;
     }
 
+    #form-input::placeholder {
+        color: $color-input;
+    }
+
     #form-input:hover {
         background-color: lighten($background-form, 30%);
+        width: 60%;
     }
 
     #form-input:focus {
+        background-color: lighten($background-form, 30%);
         outline: none;
         width: 60%;
     }

@@ -44,14 +44,10 @@ class Application extends React.Component {
       }
       return task;
     });
-    // New state value for tasks
-    const newState = {
-      tasks: [
-        ...updateTasks,
-      ],
-    };
     // Set the state
-    this.setState(newState);
+    this.setState({
+      tasks: updateTasks,
+    });
   };
 
   updateInput = (value) => {

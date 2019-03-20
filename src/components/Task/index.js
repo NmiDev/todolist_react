@@ -4,6 +4,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FaTrashAlt } from 'react-icons/fa';
+
 
 /**
  * Local imports
@@ -27,13 +29,18 @@ const Task = ({
 
   return (
     <li className={classList}>
-      <input
-        className="task-input"
-        type="checkbox"
-        checked={done}
-        onChange={handleCheck(id)}
-      />
-      <p className="task-label">{label}</p>
+      <div className="task-container">
+        <input
+          className="task-container-input"
+          type="checkbox"
+          checked={done}
+          onChange={handleCheck(id)}
+        />
+        <p className="task-container-label">{label}</p>
+      </div>
+      <div className="task-options">
+        <FaTrashAlt className="task-options-delete" />
+      </div>
     </li>
   );
 };
