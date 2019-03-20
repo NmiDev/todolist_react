@@ -57,7 +57,7 @@ class Application extends React.Component {
   handleChange = (event) => {
     // Prevent default
     event.preventDefault();
-    // Catch and clean the value of input
+    // Catch the value of input
     const inputValue = event.target.value;
     // Set the state
     this.setState({
@@ -65,29 +65,29 @@ class Application extends React.Component {
     });
   };
 
-  handleSubmit = (event) => {
-    // Prevent default
-    event.preventDefault();
+  addTask = () => {
     // Needed values from the state
     const { tasks, input } = this.state;
-    // Catch the new label
-    const newLabel = input.trim();
     // Generate the next id
     const currentId = tasks.map(task => (task.id));
     const nextId = Math.max(...currentId) + 1;
-    // New task object
+    // Catch and clean the next label
+    const nextLabel = input.trim();
+    // New task definition
     const newTask = {
       id: nextId,
-      label: newLabel,
+      label: nextLabel,
       done: false,
     };
-
+    // const newLabel = input.trim();
+    // New tasks value
+    const newTasks = [
+      newTask,
+      ...tasks,
+    ];
     // Set the state and clean the input
     this.setState({
-      tasks: [
-        ...tasks,
-        newTask,
-      ],
+      tasks: newTasks,
       input: '',
     });
   };
@@ -105,7 +105,7 @@ class Application extends React.Component {
       <div id="application">
         {/* Form component */}
         <Form
-          handleSubmit={this.handleSubmit}
+          addTask={this.addTask}
           handleChange={this.handleChange}
           inputValue={input}
         />
