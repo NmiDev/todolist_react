@@ -90,7 +90,7 @@ class Application extends React.Component {
     const newTasks = tasks.filter(task => task.id !== id);
     // Set the state
     this.setState({
-      tasks: [...newTasks],
+      tasks: newTasks,
     });
   }
 
