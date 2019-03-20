@@ -54,14 +54,10 @@ class Application extends React.Component {
     this.setState(newState);
   };
 
-  handleChange = (event) => {
-    // Prevent default
-    event.preventDefault();
-    // Catch the value of input
-    const inputValue = event.target.value;
+  updateInput = (value) => {
     // Set the state
     this.setState({
-      input: inputValue,
+      input: value,
     });
   };
 
@@ -79,7 +75,6 @@ class Application extends React.Component {
       label: nextLabel,
       done: false,
     };
-    // const newLabel = input.trim();
     // New tasks value
     const newTasks = [
       newTask,
@@ -106,7 +101,7 @@ class Application extends React.Component {
         {/* Form component */}
         <Form
           addTask={this.addTask}
-          handleChange={this.handleChange}
+          updateInput={this.updateInput}
           inputValue={input}
         />
         {/* Counter component */}

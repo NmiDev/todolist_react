@@ -16,7 +16,7 @@ import './form.scss';
 class Form extends React.Component {
   static propTypes = {
     addTask: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
+    updateInput: PropTypes.func.isRequired,
     inputValue: PropTypes.string.isRequired,
   };
 
@@ -25,12 +25,21 @@ class Form extends React.Component {
     event.preventDefault();
     // Require value from this.props
     const { addTask } = this.props;
-    // Adding the new task to the State
+    // Adding the new task to the state
     addTask();
   };
 
+  handleChange = (event) => {
+    // Require value from this.props
+    const { updateInput } = this.props;
+    // Catch the value of input
+    const { value } = event.target;
+    // Update the state input value
+    updateInput(value);
+  };
+
   render() {
-    const { inputValue, handleChange } = this.props;
+    const { inputValue } = this.props;
     return (
       <form id="form" onSubmit={this.handleSubmit}>
         <input
@@ -38,7 +47,7 @@ class Form extends React.Component {
           type="text"
           placeholder="Ajouter une tâche"
           value={inputValue}
-          onChange={handleChange}
+          onChange={this.handleChange}
         />
       </form>
     );
