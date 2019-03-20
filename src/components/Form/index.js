@@ -13,7 +13,11 @@ import './form.scss';
 /**
  * Code
  */
-const Form = ({ handleSubmit, handleChange, inputValue }) => (
+const Form = ({
+  handleSubmit,
+  handleChange,
+  inputValue,
+}) => (
   <form id="form" onSubmit={handleSubmit}>
     <input
       id="form-input"

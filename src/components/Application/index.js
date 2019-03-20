@@ -30,6 +30,29 @@ class Application extends React.Component {
   /**
    * Actions
    */
+  handleCheck = id => () => {
+    // Require value from state
+    const { tasks } = this.state;
+    // Update tasks
+    const updateTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          id: task.id,
+          label: task.label,
+          done: !task.done,
+        };
+      }
+      return task;
+    });
+    // New state value for tasks
+    const newState = {
+      tasks: [
+        ...updateTasks,
+      ],
+    };
+    // Set the state
+    this.setState(newState);
+  };
 
   handleChange = (event) => {
     // Prevent default
@@ -93,6 +116,7 @@ class Application extends React.Component {
         {/* List component */}
         <List
           tasks={tasks}
+          handleCheck={this.handleCheck}
         />
       </div>
     );

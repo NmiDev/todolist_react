@@ -13,7 +13,12 @@ import './task.scss';
 /**
  * Code
  */
-const Task = ({ label, done }) => {
+const Task = ({
+  id,
+  label,
+  done,
+  handleCheck,
+}) => {
   // Prepare class for task
   const classList = classNames(
     'task',
@@ -22,15 +27,22 @@ const Task = ({ label, done }) => {
 
   return (
     <li className={classList}>
-      <input className="task-input" type="checkbox" checked={done} />
+      <input
+        className="task-input"
+        type="checkbox"
+        checked={done}
+        onChange={handleCheck(id)}
+      />
       <p className="task-label">{label}</p>
     </li>
   );
 };
 
 Task.propTypes = {
+  id: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
   done: PropTypes.bool.isRequired,
+  handleCheck: PropTypes.func.isRequired,
 };
 
 /**
