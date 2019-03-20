@@ -20,6 +20,7 @@ const Task = ({
   label,
   done,
   handleCheck,
+  handleDelete,
 }) => {
   // Prepare class for task
   const classList = classNames(
@@ -39,7 +40,10 @@ const Task = ({
         <p className="task-container-label">{label}</p>
       </div>
       <div className="task-options">
-        <FaTrashAlt className="task-options-delete" />
+        <FaTrashAlt
+          className="task-options-delete"
+          onClick={handleDelete(id)}
+        />
       </div>
     </li>
   );
@@ -50,6 +54,7 @@ Task.propTypes = {
   label: PropTypes.string.isRequired,
   done: PropTypes.bool.isRequired,
   handleCheck: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 /**

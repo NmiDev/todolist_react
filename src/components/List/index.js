@@ -16,13 +16,14 @@ import Task from 'Components/Task';
 /**
  * Code
  */
-const List = ({ tasks, handleCheck }) => (
+const List = ({ tasks, handleCheck, handleDelete }) => (
   <ul id="list">
     {tasks.map(task => (
       <Task
         {...task}
         key={task.id}
         handleCheck={handleCheck}
+        handleDelete={handleDelete}
       />
     ))}
   </ul>
@@ -35,6 +36,7 @@ List.propTypes = {
     done: PropTypes.bool,
   })).isRequired,
   handleCheck: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 /**

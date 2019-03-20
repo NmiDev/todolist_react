@@ -83,6 +83,17 @@ class Application extends React.Component {
     });
   };
 
+  deleteTask = id => () => {
+    // Require data from the state
+    const { tasks } = this.state;
+    // Set the new tasks value
+    const newTasks = tasks.filter(task => task.id !== id);
+    // Set the state
+    this.setState({
+      tasks: [...newTasks],
+    });
+  }
+
   /**
   * Render
   */
@@ -108,6 +119,7 @@ class Application extends React.Component {
         <List
           tasks={tasks}
           handleCheck={this.handleCheck}
+          handleDelete={this.deleteTask}
         />
       </div>
     );

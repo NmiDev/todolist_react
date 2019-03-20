@@ -17,24 +17,18 @@ import Counter from './counter';
 /**
  * Code
  */
-const Ephemeride = ({ counter }) => {
-  // Date format for moment.js
-  const dateToFormat = '1976-04-19T12:59-0500';
-
-  return (
-    <div id="ephemeride">
-      {/* Calendar, date of the day */}
-      <Moment
-        id="date"
-        format="dddd DD MMM"
-        locale="fr"
-      >{dateToFormat}
-      </Moment>
-      {/* Counter task undone */}
-      <Counter counter={counter} />
-    </div>
-  );
-};
+const Ephemeride = ({ counter }) => (
+  <div id="ephemeride">
+    {/* Calendar, date of the day */}
+    <Moment
+      id="date"
+      format="dddd DD MMM"
+      locale="fr"
+    />
+    {/* Counter task undone */}
+    <Counter counter={counter} />
+  </div>
+);
 
 Ephemeride.propTypes = {
   counter: PropTypes.number.isRequired,
