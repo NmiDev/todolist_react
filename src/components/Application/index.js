@@ -107,6 +107,14 @@ class Application extends React.Component {
     // Check the value of count for Ephemeride props
     const count = tasks.filter(task => task.done === false).length;
 
+    // Filter tasks undone/done
+    const filerTasks = [
+      // Tasks undone first
+      ...tasks.filter(task => task.done === false),
+      // Tasks done second
+      ...tasks.filter(task => task.done === true),
+    ];
+
     return (
       <div id="application">
         {/* Form component */}
@@ -121,7 +129,7 @@ class Application extends React.Component {
         />
         {/* List component */}
         <List
-          tasks={tasks}
+          tasks={filerTasks}
           handleCheck={this.handleCheck}
           handleDelete={this.deleteTask}
         />
