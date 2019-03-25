@@ -60,6 +60,10 @@ class Application extends React.Component {
   addTask = () => {
     // Needed values from the state
     const { tasks, input } = this.state;
+    // Stop if there's no data in the input field
+    if (input.length < 1) {
+      return;
+    }
     // Generate the next id
     const currentId = tasks.map(task => (task.id));
     const nextId = Math.max(...currentId) + 1;
